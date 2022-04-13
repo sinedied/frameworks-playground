@@ -53,5 +53,7 @@ echo "=== Generating App frameworks ==="
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
 gen angular "npx -y @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
 gen react "npx -y create-react-app@latest react-app && mv react-app react"
-gen vue "npx -y create-vue vue --default"
+gen vue "npx -y create-vue@latest vue --default"
+gen docusaurus "npx -y create-docusaurus@latest docusaurus classic --skip-install"
+gen nuxt "npx -y create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"author\":\"sinedied\",\"pm\":\"npm\",\"ui\":\"none\",\"server\":\"none\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
 
