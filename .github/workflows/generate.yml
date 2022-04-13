@@ -6,12 +6,12 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    container: ./devcontainer/Dockerfile
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v1
     - run: |
-        ./init_frameworks.sh
+        docker build -t dev - < .devcontainer/Dockerfile
+        docker run --rm -v $(pwd):/repo -w /repo dev ./init_frameworks.sh
         ./publish_frameworks.sh
       env:
         GITHUB_TOKEN: ${GITHUB_TOKEN}
