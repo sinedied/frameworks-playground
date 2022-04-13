@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        docker build -t dev - < .devcontainer/Dockerfile
+        docker build -t dev .devcontainer
         docker run --rm -v $(pwd):/repo -w /repo dev ./init_frameworks.sh
         ./publish_frameworks.sh
       env:
