@@ -10,6 +10,10 @@ if [ "$1" == "--clean" ]; then
 fi
 mkdir -p samples/api samples/app
 
+# autoenter <command>
+autoenter() {
+  expect -c "set timeout -1; spawn $*; expect \"?\" { send \"\r\"; exp_continue }"
+}
 
 # gen <name> <command> [<create_dir>]
 gen() {
@@ -25,7 +29,7 @@ gen() {
     mkdir $name
     pushd $name > /dev/null
   fi
-  bash -c "${cmd}" > /dev/null
+  $cmd > /dev/null
   if [ $mk_dir ]; then
     popd > /dev/null
   fi
@@ -56,5 +60,5 @@ gen angular "npx -y @angular/cli@latest new angular --defaults --skip-git --skip
 gen react "npx -y create-react-app@latest react-app && mv react-app react"
 gen vue "npx -y create-vue@latest vue --default"
 gen docusaurus "npx -y create-docusaurus@latest docusaurus classic --skip-install"
-gen nuxt "npx -y create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"author\":\"sinedied\",\"pm\":\"npm\",\"ui\":\"none\",\"server\":\"none\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
-
+gen nuxt "npx -y create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
+gen vuepress "autoenter npx -y create-vuepress-site vuepress"
