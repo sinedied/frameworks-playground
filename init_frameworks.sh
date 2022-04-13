@@ -15,7 +15,11 @@ gen() {
   name=$1
   cmd=$2
   mk_dir=$3
-  echo "Generating $1..."
+  if [ -d $name ]; then
+    echo "Skipping $name (already exists)"
+    return
+  fi
+  echo "Generating $name..."
   if [ $mk_dir ]; then
     mkdir $name
     pushd $name > /dev/null
@@ -29,38 +33,25 @@ gen() {
 #######################################
 # API frameworks
 #######################################
-echo "=== Generating API frameworks ==="
 pushd api > /dev/null
+echo "=== Generating API frameworks ==="
 
-# dotnet
-gen "dotnet" "func init --worker-runtime dotnet" true
-# dotnet-isolated
-mkdir dotnet-isolated && pushd dotnet-isolated && func init --worker-runtime dotnetIsolated && popd
-# dotnet-csx
-mkdir dotnet-csx && pushd dotnet-csx && func init --worker-runtime dotnet --csx && popd
-# python
-mkdir python && pushd python && func init --worker-runtime python && popd
-# node
-mkdir node && pushd node && func init --worker-runtime node && popd
-# node-ts
-mkdir node-ts && pushd node-ts && func init --worker-runtime node --language typescript && popd
+gen dotnet "func init --worker-runtime dotnet" true
+gen dotnet-isolated "func init --worker-runtime dotnetIsolated" true
+gen dotnet-csx "func init --worker-runtime dotnet" true
+gen python "func init --worker-runtime python" true
+gen node "func init --worker-runtime node" true
+gen node-ts "func init --worker-runtime node --language typescript" true
 
-popd > /dev/null
 #######################################
 # App frameworks
 #######################################
-echo "=== Generating App frameworks ==="
+popd > /dev/null
 pushd app > /dev/null
+echo "=== Generating App frameworks ==="
 
-# static
-mkdir static && pushd static && echo "<!doctype html><html><body>Hello</body></html>" > index.html && popd
-
-# angular
-npx -y @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal
-
-# react
-npx -y create-react-app react
-
-# vue
-npx -y create-vue vue --default
+gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
+gen angular "npx -y @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
+gen react "npx -y create-react-app@latest react-app && mv react-app react"
+gen vue "npx -y create-vue vue --default"
 
