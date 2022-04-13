@@ -1,6 +1,7 @@
 name: generate
 on:
-  push: [main]
+  push:
+    branches: [main]
 
 jobs:
   generate:
