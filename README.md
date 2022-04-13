@@ -2,6 +2,8 @@
 
 > Create samples apps for multiple frameworks.
 
+You can view the generated samples in the [`samples`](https://github.com/sinedied/framework-detection-playground/tree/samples) branch.
+
 ## Usage
 
 To generate samples for all frameworks, run:
