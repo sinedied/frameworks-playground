@@ -6,9 +6,10 @@
 set -e
 if [ "$1" == "--clean" ]; then
   echo "Cleaning existing app & api folders..."
-  rm -rf api app
+  rm -rf samples
 fi
-mkdir -p api app
+mkdir -p samples/api samples/app
+
 
 # gen <name> <command> [<create_dir>]
 gen() {
@@ -33,7 +34,7 @@ gen() {
 #######################################
 # API frameworks
 #######################################
-pushd api > /dev/null
+pushd samples/api > /dev/null
 echo "=== Generating API frameworks ==="
 
 gen dotnet "func init --worker-runtime dotnet" true
@@ -47,7 +48,7 @@ gen node-ts "func init --worker-runtime node --language typescript" true
 # App frameworks
 #######################################
 popd > /dev/null
-pushd app > /dev/null
+pushd samples/app > /dev/null
 echo "=== Generating App frameworks ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
