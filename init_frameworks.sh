@@ -10,11 +10,6 @@ if [ "$1" == "--clean" ]; then
 fi
 mkdir -p samples/api samples/app
 
-# autoenter <command>
-autoenter() {
-  expect -c "set timeout -1; spawn $*; expect \"?\" { send \"\r\"; exp_continue }"
-}
-
 # gen <name> <command> [<create_dir>]
 gen() {
   name=$1
@@ -29,10 +24,23 @@ gen() {
     mkdir $name
     pushd $name > /dev/null
   fi
-  $cmd > /dev/null
+  if [ -z "$DEBUG" ]; then
+    $cmd > /dev/null
+  else
+    $cmd
+  fi
   if [ $mk_dir ]; then
     popd > /dev/null
   fi
+}
+
+# autoenter <command>
+autoenter() {
+  expect -c "set timeout -1; spawn $*; expect \"?\" { send \"\r\"; exp_continue }"
+}
+
+npx() {
+  command npx -y $@
 }
 
 #######################################
@@ -56,9 +64,13 @@ pushd samples/app > /dev/null
 echo "=== Generating App frameworks ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
-gen angular "npx -y @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
-gen react "npx -y create-react-app@latest react-app && mv react-app react"
-gen vue "npx -y create-vue@latest vue --default"
-gen docusaurus "npx -y create-docusaurus@latest docusaurus classic --skip-install"
-gen nuxt "npx -y create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
-gen vuepress "autoenter npx -y create-vuepress-site vuepress"
+gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
+gen react "npx create-react-app@latest react-app && mv react-app react"
+gen preact "npx preact-cli@latest create default preact"
+gen vue "npx create-vue@latest vue --default"
+gen docusaurus "npx create-docusaurus@latest docusaurus classic --skip-install"
+gen nuxt "npx create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
+gen nextjs "npx create-next-app nextjs --use-npm"
+gen vuepress "autoenter npx -y create-vuepress-site@latest vuepress"
+gen aurelia "npx aurelia-cli@latest new aurelia --select"
+gen gatsby "npx create-gatsby -y gatsby"
