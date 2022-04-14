@@ -77,8 +77,8 @@ pushd samples/app > /dev/null
 echo "=== Generating App frameworks ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
-gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
-gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && ng add --skip-confirmation --defaults @scullyio/init@next"
+gen angular "ng new angular --defaults --skip-git --skip-install --minimal"
+gen angular-scully "ng new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && ng add --skip-confirmation --defaults @scullyio/init@next"
 gen react "npx create-react-app@latest react-app" false react-app
 gen preact "npx preact-cli@latest create default preact"
 gen vue "npx create-vue@latest vue --default"
