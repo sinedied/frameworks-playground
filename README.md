@@ -1,6 +1,6 @@
 # 🛝 frameworks-playground
 
-[![Build Status](https://github.com/sinedied/frameworks-playground/workflows/build/badge.svg)](https://github.com/sinedied/frameworks-playground/actions)
+[![Build Status](https://github.com/sinedied/frameworks-playground/workflows/create-samples/badge.svg)](https://github.com/sinedied/frameworks-playground/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 > Create samples apps for multiple frameworks.
