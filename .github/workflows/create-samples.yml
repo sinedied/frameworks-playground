@@ -12,7 +12,7 @@ jobs:
     - run: ./docker.sh build
     - run: ./docker.sh run
       env:
-        DEBUG=1
-    - run: ./publish_frameworks.sh
+        DEBUG: 1
+    - run: ./publish_samples.sh
       env:
         GITHUB_TOKEN: ${GITHUB_TOKEN}
