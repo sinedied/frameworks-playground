@@ -1,6 +1,6 @@
 #!/bin/bash
 #######################################
-# Usage: ./init_frameworks.sh [--clean]
+# Usage: ./create_samples.sh [--clean]
 #######################################
 
 CI=true
@@ -10,7 +10,7 @@ if [ ! -z "$DEBUG" ]; then
   echo "> Debug mode enabled <"
 fi
 if [ "$1" == "--clean" ]; then
-  echo "Cleaning existing app & api folders..."
+  echo "Cleaning existing samples..."
   rm -rf samples
 fi
 mkdir -p samples/api samples/app
@@ -67,7 +67,7 @@ npx() {
 # API frameworks (for Azure Functions)
 #######################################
 pushd samples/api > /dev/null
-echo "=== Generating API frameworks ==="
+echo "=== Generating API samples ==="
 
 gen dotnet "func init --worker-runtime dotnet" true
 gen dotnet-isolated "func init --worker-runtime dotnetIsolated" true
@@ -81,7 +81,7 @@ gen node-ts "func init --worker-runtime node --language typescript" true
 #######################################
 popd > /dev/null
 pushd samples/app > /dev/null
-echo "=== Generating App frameworks ==="
+echo "=== Generating App samples ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
 gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"

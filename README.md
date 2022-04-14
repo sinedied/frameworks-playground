@@ -22,7 +22,7 @@ Unless you use the `--clean` option, if you run the command again, it will only 
 A [dev container](https://code.visualstudio.com/docs/remote/containers?WT.mc_id=javascript-0000-yolasors) with all needed tools is also available.
 From within the devcontainer, you can run simply the command:
 ```bash
-./init_frameworks.sh [--clean]
+./create_samples.sh [--clean]
 ```
 
 By default, log output from the generator commands are hidden, but you can see them by setting the `DEBUG` environment variable:
