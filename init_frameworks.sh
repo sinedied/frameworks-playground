@@ -77,8 +77,8 @@ pushd samples/app > /dev/null
 echo "=== Generating App frameworks ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
-gen angular "ng new angular --defaults --skip-git --skip-install --minimal"
-gen angular-scully "ng new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && ng add --skip-confirmation --defaults @scullyio/init@next"
+gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
+gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && npm i @scullyio/init@latest --legacy-peer-deps && npx @angular/cli@latest add --skip-confirmation --defaults @scullyio/init@latest"
 gen react "npx create-react-app@latest react-app" false react-app
 gen preact "npx preact-cli@latest create default preact"
 gen vue "npx create-vue@latest vue --default"
@@ -98,11 +98,11 @@ gen django "django-admin startproject djangoapp" false djangoapp
 gen polymer "npx degit PolymerLabs/polymer-3-first-element polymer"
 gen lit "npx @open-wc/create --type scaffold --scaffoldType app --typescript true --tagName lit-app --installDependencies false --features --writeToDisk true" false lit-app
 gen marko "autoenter npx -y @marko/create@latest marko"
-gen hexo "hexo init hexo"
+gen hexo "npx hexo-cli init hexo"
 gen meteor "meteor create --blaze meteor"
 gen blazor "dotnet new blazorserver -o blazor --no-https"
 gen flutter "flutter create flutterapp" false flutterapp
-gen ionic-angular "autoenter ionic start ionic-angular blank --type angular --no-deps --no-git"
-gen ionic-react "autoenter ionic start ionic-react blank --type react --no-deps --no-git"
-gen ionic-vue "autoenter ionic start ionic-vue blank --type vue --no-deps --no-git"
+gen ionic-angular "autoenter npx -y @ionic/cli start ionic-angular blank --type angular --no-deps --no-git"
+gen ionic-react "autoenter npx -y @ionic/cli start ionic-react blank --type react --no-deps --no-git"
+gen ionic-vue "autoenter npx -y @ionic/cli start ionic-vue blank --type vue --no-deps --no-git"
 gen capacitor "npx @capacitor/create-app capacitor --name capacitor --app-id com.fw.playground"

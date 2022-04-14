@@ -26,7 +26,7 @@ RUN apt-get update \
 # Setup Node.js and npm packages
 RUN curl -sfL "https://raw.githubusercontent.com/microsoft/vscode-dev-containers/main/script-library/node-debian.sh" -o /tmp/node-debian.sh && bash /tmp/node-debian.sh "${NVM_DIR}" "${NODE_VERSION}" "${USERNAME}" \
     && su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1" \
-    && su vscode -c "umask 0002 && npm install --cache /tmp/empty-cache -g npm@latest polymer-cli hexo-cli @ionic/cli @angular/cli@latest" \
+    && su vscode -c "umask 0002 && npm install --cache /tmp/empty-cache -g npm@latest polymer-cli" \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install Elm
