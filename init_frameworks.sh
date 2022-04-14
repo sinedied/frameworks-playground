@@ -36,7 +36,12 @@ gen() {
 
 # autoenter <command>
 autoenter() {
-  expect -c "set timeout -1; spawn $*; expect \"?\" { send \"\r\"; exp_continue }"
+  expect -c "
+    set timeout -1
+    spawn $*
+    expect {
+      -re \"\[?\]\" { send \"\r\"; exp_continue }
+    }"
 }
 
 npx() {
