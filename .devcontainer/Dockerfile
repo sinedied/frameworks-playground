@@ -13,7 +13,7 @@ ENV NVM_DIR="/usr/local/share/nvm" \
     PATH="${NVM_DIR}/current/bin:${PATH}"
 RUN bash /tmp/library-scripts/node-debian.sh "${NVM_DIR}" "${NODE_VERSION}" "${USERNAME}" \
     && su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1" \
-    && su vscode -c "umask 0002 && npm install --cache /tmp/empty-cache -g @azure/static-web-apps-cli" \
+    && su vscode -c "umask 0002 && npm install --cache /tmp/empty-cache -g npm@latest" \
     && apt-get update \
     && if [ $CORE_TOOLS_VERSION != "4" ]; then apt-get remove -y azure-functions-core-tools-4 &&  apt-get install -y "azure-functions-core-tools-${CORE_TOOLS_VERSION}"; fi \
     && apt-get install -y expect \
