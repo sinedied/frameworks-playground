@@ -57,7 +57,7 @@ npx() {
   command npx -y "$@"
 }
 #######################################
-# API frameworks
+# API frameworks (for Azure Functions)
 #######################################
 pushd samples/api > /dev/null
 echo "=== Generating API frameworks ==="
@@ -99,3 +99,10 @@ gen polymer "npx degit PolymerLabs/polymer-3-first-element polymer"
 gen lit "npx @open-wc/create --type scaffold --scaffoldType app --typescript true --tagName lit-app --installDependencies false --features --writeToDisk true" false lit-app
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen hexo "hexo init hexo"
+gen meteor "meteor create --blaze meteor"
+gen blazor "dotnet new blazorserver -o blazor --no-https"
+gen flutter "flutter create flutterapp" false flutterapp
+gen ionic-angular "autoenter ionic start ionic-angular blank --type angular --no-deps --no-git"
+gen ionic-react "autoenter ionic start ionic-react blank --type react --no-deps --no-git"
+gen ionic-vue "autoenter ionic start ionic-vue blank --type vue --no-deps --no-git"
+gen capacitor "npx @capacitor/create-app capacitor --name capacitor --app-id com.fw.playground"
