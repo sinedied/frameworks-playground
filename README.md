@@ -22,3 +22,7 @@ From within the devcontainer, you can run simply the command:
 ./init_frameworks.sh [--clean]
 ```
 
+By default, log output from the generator commands are hidden, but you can see them by setting the `DEBUG` environment variable:
+```bash
+DEBUG=1 ./docker.sh run
+```
