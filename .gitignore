@@ -1,5 +1,55 @@
-/samples/
-test/
+# dotnet
+*.swp
+*.*~
+project.lock.json
+*.pyc
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+nupkg/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+pip-log.txt
+pip-delete-this-directory.txt
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Node
 node_modules/
+logs
+*.log
+npm-debug.log*
+*.tgz
+dist/
+.vuepress/dist
+.docusaurus
+
+# Other
+/samples/
+.env
 .DS_Store
 TODO
