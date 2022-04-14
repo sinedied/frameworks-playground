@@ -10,8 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        docker build -t dev .devcontainer
-        docker run --rm -v $(pwd):/repo -w /repo dev ./init_frameworks.sh
+        ./docker build
+        ./docker run
         ./publish_frameworks.sh
       env:
         GITHUB_TOKEN: ${GITHUB_TOKEN}
