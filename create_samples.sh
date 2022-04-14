@@ -90,26 +90,26 @@ gen react "npx create-react-app@latest react-app" false react-app
 gen preact "npx preact-cli@latest create default preact"
 gen vue "npx create-vue@latest vue --default"
 gen docusaurus "npx create-docusaurus@latest docusaurus classic --skip-install"
-gen nuxtjs "npx create-nuxt-app@latest nuxtjs --answers {\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}"
+gen nuxtjs "npx create-nuxt-app@latest nuxtjs --answers '{\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
 gen nextjs "npx create-next-app nextjs --use-npm"
 gen vuepress "autoenter npx -y create-vuepress-site@latest vuepress"
 gen aurelia "npx aurelia-cli@latest new aurelia --select"
 gen gatsby "npx create-gatsby@latest -y gatsby"
 gen svelte "npx degit sveltejs/template svelte"
-gen hugo "hugo new site hugo"
 gen ember "npx ember-cli@latest new ember-app --lang en --skip-git true --skip-npm true" false ember-app
 gen riot "autoenter npx -y create-riot@latest riot" true
 gen stencil "npx create-stencil@latest app stencil"
-gen elm "yes | elm init" true
-gen django "django-admin startproject djangoapp" false djangoapp
 gen polymer "npx degit PolymerLabs/polymer-3-first-element polymer"
 gen lit "npx @open-wc/create --type scaffold --scaffoldType app --typescript true --tagName lit-app --installDependencies false --features --writeToDisk true" false lit-app
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen hexo "npx hexo-cli init hexo"
-gen meteor "meteor create --blaze meteor"
-gen blazor "dotnet new blazorserver -o blazor --no-https"
-gen flutter "flutter create flutterapp" false flutterapp
 gen ionic-angular "autoenter npx -y @ionic/cli start ionic-angular blank --type angular --no-deps --no-git"
 gen ionic-react "autoenter npx -y @ionic/cli start ionic-react blank --type react --no-deps --no-git"
 gen ionic-vue "autoenter npx -y @ionic/cli start ionic-vue blank --type vue --no-deps --no-git"
 gen capacitor "npx @capacitor/create-app capacitor --name capacitor --app-id com.fw.playground"
+gen hugo "hugo new site hugo"
+gen elm "yes | elm init" true
+gen django "django-admin startproject djangoapp" false djangoapp
+gen meteor "meteor create --blaze meteor"
+gen blazor "dotnet new blazorserver -o blazor --no-https"
+gen flutter "flutter create flutterapp" false flutterapp
