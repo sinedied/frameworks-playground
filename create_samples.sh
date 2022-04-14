@@ -110,6 +110,6 @@ gen capacitor "npx @capacitor/create-app capacitor --name capacitor --app-id com
 gen hugo "hugo new site hugo"
 gen elm "yes | elm init" true
 gen django "django-admin startproject djangoapp" false djangoapp
-gen meteor "meteor create --blaze meteor"
+gen meteor "meteor create --blaze meteor --allow-superuser"
 gen blazor "dotnet new blazorserver -o blazor --no-https"
 gen flutter "flutter create flutterapp" false flutterapp
