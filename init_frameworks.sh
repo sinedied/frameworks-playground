@@ -40,7 +40,7 @@ autoenter() {
 }
 
 npx() {
-  command npx -y $@
+  command npx -y "$@"
 }
 
 #######################################
@@ -69,7 +69,7 @@ gen react "npx create-react-app@latest react-app && mv react-app react"
 gen preact "npx preact-cli@latest create default preact"
 gen vue "npx create-vue@latest vue --default"
 gen docusaurus "npx create-docusaurus@latest docusaurus classic --skip-install"
-gen nuxt "npx create-nuxt-app@latest nuxt --answers '{\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}'"
+gen nuxtjs "npx create-nuxt-app@latest nuxtjs --answers {\"name\":\"nuxt\",\"language\":\"ts\",\"pm\":\"npm\",\"ui\":\"none\",\"target\":\"static\",\"features\":[],\"linter\":[],\"test\":\"none\",\"mode\":\"universal\",\"devTools\":[]}"
 gen nextjs "npx create-next-app nextjs --use-npm"
 gen vuepress "autoenter npx -y create-vuepress-site@latest vuepress"
 gen aurelia "npx aurelia-cli@latest new aurelia --select"
