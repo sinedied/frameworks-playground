@@ -29,15 +29,15 @@ gen() {
   if [ "$mk_dir" == true ]; then
     mkdir $name
     pushd $name > /dev/null
+  else
+    pushd . > /dev/null
   fi
   if [ -z "$DEBUG" ]; then
     eval "$cmd" > /dev/null
   else
     eval "$cmd"
   fi
-  if [ "$mk_dir" == true ]; then
-    popd > /dev/null
-  fi
+  popd > /dev/null
   if [ ! -z "$rename_dir" ]; then
     mv $rename_dir $name
   fi
@@ -51,6 +51,13 @@ autoenter() {
     expect {
       -re \"\[?\]\" { send \"\r\"; exp_continue }
     }"
+}
+
+# nofail <command>
+nofail() {
+  set +e
+  eval "$1"
+  set -e
 }
 
 npx() {
@@ -78,7 +85,7 @@ echo "=== Generating App frameworks ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
 gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
-gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && npm i @scullyio/init@latest --legacy-peer-deps && npx @angular/cli@latest add --skip-confirmation --defaults @scullyio/init@latest"
+gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && nofail \"npx @angular/cli@latest add --skip-confirmation --defaults @scullyio/init@latest\""
 gen react "npx create-react-app@latest react-app" false react-app
 gen preact "npx preact-cli@latest create default preact"
 gen vue "npx create-vue@latest vue --default"
