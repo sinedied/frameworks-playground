@@ -1,8 +1,12 @@
 #!/bin/bash
 
 BRANCH=samples
+USER_NAME=$(id -u -n)
+USER_GROUP=$(id -g -n)
+echo "> Current user: $USER_NAME/$USER_GROUP <"
 
 set -e
+chown -R $USER_NAME:$USER_GROUP samples
 cp .gitignore samples/
 cd samples
 sed -i 's/\/samples\///g' .gitignore
