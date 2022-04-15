@@ -82,6 +82,7 @@ pushd samples/app > /dev/null
 echo "=== Generating App samples ==="
 
 gen static "echo '<!doctype html><html><body>Hello</body></html>' > index.html" true
+gen gatsby "npx create-gatsby@latest -y gatsby"
 gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
 gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && nofail \"npx @angular/cli@latest add --skip-confirmation --defaults @scullyio/init@latest\""
 gen react "npx create-react-app@latest react-app" false react-app
@@ -92,7 +93,6 @@ gen nuxtjs "npx create-nuxt-app@latest nuxtjs --answers '{\"name\":\"nuxt\",\"la
 gen nextjs "npx create-next-app@latest nextjs --use-npm"
 gen vuepress "autoenter npx -y create-vuepress-site@latest vuepress"
 gen aurelia "npx aurelia-cli@latest new aurelia --select"
-gen gatsby "npx create-gatsby@latest -y gatsby"
 gen svelte "npx degit sveltejs/template svelte"
 gen ember "npx ember-cli@latest new ember-app --lang en --skip-git true --skip-npm true" false ember-app
 gen riot "autoenter npx -y create-riot@latest riot" true
