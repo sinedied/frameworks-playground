@@ -3,10 +3,9 @@
 BRANCH=samples
 
 set -e
-sed -i '.old' -e 's/\/samples\///g' .gitignore
-rm -f .*.old
 cp .gitignore samples/.gitignore
 cd samples
+sed -i 's/\/samples\///g' .gitignore
 git config --global user.name "ci-rebot"
 git config --global user.email "cirebot.github@gmail.com"
 git init
