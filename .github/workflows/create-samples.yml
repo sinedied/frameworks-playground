@@ -9,9 +9,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v1
-      with:
-        persist-credentials: false
     - run: ./docker.sh build
+    - run: |
+        git config --global user.name "ci-rebot"
+        git config --global user.email "cirebot.github@gmail.com"
     - run: |
         ./docker.sh run
         sudo chown -R $(id -u):$(id -g) ./samples
