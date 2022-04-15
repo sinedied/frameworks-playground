@@ -55,9 +55,7 @@ autoenter() {
 
 # nofail <command>
 nofail() {
-  set +e
-  eval "$1"
-  set -e
+  eval "$1" || true
 }
 
 npx() {
