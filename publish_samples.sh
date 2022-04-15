@@ -3,7 +3,7 @@
 BRANCH=samples
 
 set -e
-cp .gitignore samples/.gitignore
+cp .gitignore samples/
 cd samples
 sed -i 's/\/samples\///g' .gitignore
 git config --global user.name "ci-rebot"
