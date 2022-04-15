@@ -10,7 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: ./docker.sh build
-    - run: ./docker.sh run
+    - run: |
+        ./docker.sh run
+        sudo chown -R $(id -u):$(id -g) ./samples
       env:
         DEBUG: 1
     - run: ./publish_samples.sh
