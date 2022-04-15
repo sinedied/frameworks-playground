@@ -9,6 +9,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v1
+      with:
+        persist-credentials: false
     - run: ./docker.sh build
     - run: |
         ./docker.sh run
@@ -17,4 +19,4 @@ jobs:
         DEBUG: 1
     - run: ./publish_samples.sh
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
