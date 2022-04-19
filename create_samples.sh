@@ -97,7 +97,7 @@ gen svelte "npx degit sveltejs/template svelte"
 gen ember "npx ember-cli@latest new ember-app --lang en --skip-git true --skip-npm true" false ember-app
 gen riot "autoenter npx -y create-riot@latest riot" true
 gen stencil "npx create-stencil@latest app stencil"
-gen polymer "npx degit PolymerLabs/polymer-3-first-element polymer"
+gen polymer "npx degit PolymerLabs/polymer-3-first-element polymer && cd polymer && cp -f demo/index.html ./ && sed -i 's/..\/node/.\/node/g' index.html && sed -i 's/demo-element.js/demo\/demo-element.js/g' index.html"
 gen lit "npx @open-wc/create@latest --type scaffold --scaffoldType app --typescript true --tagName lit-app --installDependencies false --features --writeToDisk true" false lit-app
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen hexo "npx hexo-cli@latest init hexo"
