@@ -106,7 +106,7 @@ gen ionic-react "autoenter npx -y @ionic/cli@latest start ionic-react blank --ty
 gen ionic-vue "autoenter npx -y @ionic/cli@latest start ionic-vue blank --type vue --no-deps --no-git"
 gen capacitor "npx @capacitor/create-app@latest capacitor --name capacitor --app-id com.fw.playground"
 gen hugo "hugo new site hugo"
-gen elm "yes | elm init" true
+gen elm "yes | elm init && curl https://raw.githubusercontent.com/elm/elm-lang.org/master/examples/buttons.elm -o src/Main.elm" true
 gen django "django-admin startproject djangoapp" false djangoapp
 gen meteor "meteor create --blaze meteor --allow-superuser"
 gen blazor "dotnet new blazorserver -o blazor --no-https"
