@@ -105,7 +105,7 @@ gen ionic-angular "autoenter npx -y @ionic/cli@latest start ionic-angular blank 
 gen ionic-react "autoenter npx -y @ionic/cli@latest start ionic-react blank --type react --no-deps --no-git"
 gen ionic-vue "autoenter npx -y @ionic/cli@latest start ionic-vue blank --type vue --no-deps --no-git"
 gen capacitor "npx @capacitor/create-app@latest capacitor --name capacitor --app-id com.fw.playground"
-gen hugo "hugo new site hugo"
+gen hugo "hugo new site hugo && cd hugo && git init && git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke && echo 'theme = \"ananke\"' >> config.toml && hugo new posts/my-first-post.md && echo 'Hello world' >> content/posts/my-first-post.md"
 gen elm "yes | elm init && curl https://raw.githubusercontent.com/elm/elm-lang.org/master/examples/buttons.elm -o src/Main.elm" true
 gen django "django-admin startproject djangoapp" false djangoapp
 gen meteor "meteor create --blaze meteor --allow-superuser"
