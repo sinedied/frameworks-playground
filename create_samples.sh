@@ -4,6 +4,7 @@
 #######################################
 
 CI=true
+ROOT_DIR=$(pwd)
 
 set -e
 if [ ! -z "$DEBUG" ]; then
@@ -106,9 +107,25 @@ gen ionic-vue "autoenter npx -y @ionic/cli@latest start ionic-vue blank --type v
 gen capacitor "npx @capacitor/create-app@latest capacitor --name capacitor --app-id com.fw.playground"
 gen hugo "hugo new site hugo && cd hugo && git init && git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke && echo 'theme = \"ananke\"' >> config.toml && hugo new posts/my-first-post.md && echo 'Hello world' >> content/posts/my-first-post.md"
 gen elm "yes | elm init && curl https://raw.githubusercontent.com/elm/elm-lang.org/master/examples/buttons.elm -o src/Main.elm" true
-gen django "django-admin startproject djangoapp" false djangoapp
 gen blazor "dotnet new blazorserver -o blazor --no-https"
 gen flutter "flutter create flutterapp" false flutterapp
+gen jekyll "jekyll new jekyll"
+gen slate "npx degit slatedocs/slate slate && cd slate && bundle install"
+gen mkdocs "mkdocs new mkdocs"
+gen eleventy "npm init -y && npm i -D @11ty/eleventy && echo '<!doctype html><html><head><title>Page title</title></head><body><p>Hi</p></body></html>' > index.html && echo '# Page header' > README.md" true
+gen astro "npx degit withastro/astro/examples/starter#latest astro"
+gen astro-alpine "npx degit withastro/astro/examples/framework-alpine#latest astro-alpine"
+gen astro-lit "npx degit withastro/astro/examples/framework-lit#latest astro-lit"
+gen astro-preact "npx degit withastro/astro/examples/framework-preact#latest astro-preact"
+gen astro-react "npx degit withastro/astro/examples/framework-react#latest astro-react"
+gen astro-solid "npx degit withastro/astro/examples/framework-solid#latest astro-solid"
+gen astro-svelte "npx degit withastro/astro/examples/framework-svelte#latest astro-svelte"
+gen astro-vue "npx degit withastro/astro/examples/framework-vue#latest astro-vue"
+gen astro-multiple "npx degit withastro/astro/examples/framework-multiple#latest astro-multiple"
+gen docsify "npx docsify-cli@latest init docsify"
+gen pelican "$ROOT_DIR/expect/pelican.exp && printf 'Title: My First Post\nDate: 2022-04-20 12:20\nCategory: Blog\n\nHello world' > content/my-post.md" true
+gen react-static "npx react-static@latest create -n react-static -t basic"
+# gen django "django-admin startproject djangoapp" false djangoapp
 
 #########################################
 # App frameworks (Server Side Rendering)
@@ -118,6 +135,7 @@ mkdir -p samples/ssr
 pushd samples/ssr > /dev/null
 echo "=== Generating SSR samples ==="
 
+gen angular-universal "npx @angular/cli@latest new angular-universal --defaults --skip-git --skip-install --minimal && cd angular-universal && npx @angular/cli@latest add --skip-confirmation --defaults @nguniversal/express-engine"
 gen nextjs "npx create-next-app@latest nextjs --use-npm"
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen meteor "meteor create --blaze meteor --allow-superuser" # build: meteor build --directory dist
