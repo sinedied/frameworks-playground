@@ -13,6 +13,7 @@ ENV NVM_DIR="/usr/local/share/nvm" \
 RUN curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.10.4-stable.tar.xz -o /tmp/flutter.tar.xz \
     && tar -xJf /tmp/flutter.tar.xz -C /tmp \
     && rm -rf /tmp/flutter.tar.xz \
+    && chown -R vscode flutter \
     && mv /tmp/flutter /usr/local/bin/ \
     && flutter channel stable \
     && flutter upgrade 
@@ -34,10 +35,12 @@ RUN curl -L -o elm.gz https://github.com/elm/compiler/releases/download/0.19.1/b
     && gunzip elm.gz \
     && rm -rf elm.gz \
     && chmod +x elm \
+    && chown -R vscode elm \
     && mv elm /usr/local/bin/
 
 # Install Django
 RUN python -m pip install --no-cache-dir Django
 
 # Install Meteor
-RUN curl https://install.meteor.com/ | sh
+RUN su vscode -c "curl https://install.meteor.com/ | sh"
+
