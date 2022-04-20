@@ -9,12 +9,18 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v1
-    - run: ./docker.sh build
-    - run: |
+    - name: Build docker image
+      run: ./docker.sh build
+    - name: Generate samples
+      run: |
         ./docker.sh run
         sudo chown -R $(id -u):$(id -g) ./samples
       env:
         DEBUG: 1
-    - run: ./publish_samples.sh
+    - name: Publish samples
+      run: |
+        git config --global user.name "ci-rebot"
+        git config --global user.email "cirebot.github@gmail.com"
+        ./publish_samples.sh
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

@@ -7,8 +7,7 @@ set -e
 cp .gitignore samples/
 cd samples
 sed -i 's/\/samples\///g' .gitignore
-git config --global user.name "ci-rebot"
-git config --global user.email "cirebot.github@gmail.com"
+
 git init
 git remote add origin $REPO
 git checkout --orphan $BRANCH
