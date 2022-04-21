@@ -9,6 +9,7 @@ ROOT_DIR=$(pwd)
 set -e
 if [ ! -z "$DEBUG" ]; then
   echo "> Debug mode enabled <"
+  echo "Running script as user: $(id -u -n):$(id -g -n)"
 fi
 if [ "$1" == "--clean" ]; then
   echo "Cleaning existing samples..."
