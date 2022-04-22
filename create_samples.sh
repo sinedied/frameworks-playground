@@ -108,7 +108,7 @@ gen ionic-vue "autoenter npx -y @ionic/cli@latest start ionic-vue blank --type v
 gen capacitor "npx @capacitor/create-app@latest capacitor --name capacitor --app-id com.fw.playground"
 gen hugo "hugo new site hugo && cd hugo && git init && git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke && echo 'theme = \"ananke\"' >> config.toml && hugo new posts/my-first-post.md && echo 'Hello world' >> content/posts/my-first-post.md"
 gen elm "yes | elm init && curl https://raw.githubusercontent.com/elm/elm-lang.org/master/examples/buttons.elm -o src/Main.elm" true
-gen blazor "dotnet new blazorserver -o blazor --no-https"
+gen blazor-wasm "dotnet new blazorwasm -o blazor-wasm --no-https"
 gen flutter "flutter create flutterapp" false flutterapp
 gen jekyll "jekyll new jekyll"
 gen slate "npx degit slatedocs/slate slate && cd slate && bundle install"
@@ -140,4 +140,5 @@ gen angular-universal "npx @angular/cli@latest new angular-universal --defaults 
 gen nextjs "npx create-next-app@latest nextjs --use-npm"
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen meteor "meteor create --blaze meteor --allow-superuser" # build: meteor build --directory dist
+gen blazor-server "dotnet new blazorserver -o blazor-server --no-https"
 
