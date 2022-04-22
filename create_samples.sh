@@ -126,6 +126,16 @@ gen astro-multiple "npx degit withastro/astro/examples/framework-multiple#latest
 gen docsify "npx docsify-cli@latest init docsify"
 gen pelican "$ROOT_DIR/expect/pelican.exp && printf 'Title: My First Post\nDate: 2022-04-20 12:20\nCategory: Blog\n\nHello world' > content/my-post.md" true
 gen react-static "npx react-static@latest create -n react-static -t basic"
+gen gridsome "npx @gridsome/cli@latest create gridsome"
+gen solid "npx degit solidjs/templates/ts solid"
+gen svelte-kit "autoenter npx -y create-svelte@latest svelte-kit && cd svelte-kit && npm i -D @sveltejs/adapter-static && sed -i 's/adapter-auto/adapter-static/g' svelte.config.js"
+gen sapper "npx degit sveltejs/sapper-template#rollup sapper"
+gen vitepress "npm init -y && npm i -D vitepress && mkdir docs && echo '# Hello VitePress' > docs/index.md && node -p $'JSON.stringify({ ...require(\'./package.json\'), scripts: { \'docs:dev\': \'vitepress dev docs\', \'docs:build\': \'vitepress build docs\', \'docs:serve\': \'vitepress serve docs\' }}, null, 2)' > package.json.new && mv package.json.new package.json" true
+gen metalsmith "npx degit metalsmith/metalsmith/examples/static-site metalsmith"
+gen wintersmith "npx wintersmith@latest new wintersmith"
+gen middleman "middleman init middleman"
+gen brunch "npx degit brunch/with-es6 brunch"
+
 # gen django "django-admin startproject djangoapp" false djangoapp
 
 #########################################
@@ -141,4 +151,5 @@ gen nextjs "npx create-next-app@latest nextjs --use-npm"
 gen marko "autoenter npx -y @marko/create@latest marko"
 gen meteor "meteor create --blaze meteor --allow-superuser" # build: meteor build --directory dist
 gen blazor-server "dotnet new blazorserver -o blazor-server --no-https"
+gen remix "autoenter npx -y create-remix@latest remix --no-install"
 
