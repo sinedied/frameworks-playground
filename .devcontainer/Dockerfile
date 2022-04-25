@@ -6,7 +6,7 @@ ARG NODE_VERSION="16"
 ENV PLATFORM_DOCKER=1 \
     NVM_DIR="/usr/local/share/nvm" \
     NVM_SYMLINK_CURRENT=true \
-    PATH="${NVM_DIR}/current/bin:/usr/local/bin/flutter/bin:/home/vscode/.cargo/bin${PATH}" \
+    PATH="${NVM_DIR}/current/bin:/usr/local/bin/flutter/bin:/home/vscode/.cargo/bin:/home/vscode/.local/bin:${PATH}"
 
 # Setup Node.js and apt packages
 RUN curl -sfL "https://raw.githubusercontent.com/microsoft/vscode-dev-containers/main/script-library/node-debian.sh" -o /tmp/node-debian.sh \
@@ -23,7 +23,7 @@ RUN curl https://storage.googleapis.com/flutter_infra_release/releases/stable/li
     && tar -xJf /tmp/flutter.tar.xz -C /tmp \
     && rm -rf /tmp/flutter.tar.xz \
     && sudo chown -R vscode /tmp/flutter \
-    && sudo mv /tmp/flutter /usr/local/bin/
+    && sudo mv /tmp/flutter /usr/local/bin/ \
     && flutter channel stable \
     && flutter upgrade
 
@@ -56,5 +56,4 @@ RUN ZOLA_VERSION=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://gi
 
 # Install Rust and its packages
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
-    && cargo install mdbook \
-
+    && cargo install mdbook
