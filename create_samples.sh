@@ -135,6 +135,9 @@ gen metalsmith "npx degit metalsmith/metalsmith/examples/static-site metalsmith"
 gen wintersmith "npx wintersmith@latest new wintersmith"
 gen middleman "middleman init middleman"
 gen brunch "npx degit brunch/with-es6 brunch"
+gen mdbook "autoenter mdbook init --force --ignore git --theme --title mdbook mdbook"
+gen zola "autoenter zola init zola && cd zola && printf '+++\ntitle = \"Hello\"\n+++\n# Hello Zola' > content/blog/_index.md && git clone https://github.com/InputUsername/zola-hook.git themes/hook && echo -e 'theme = \"hook\"\n' > config.tmp && cat config.toml >> config.tmp && mv config.tmp config.toml"
+gen lektor "$ROOT_DIR/expect/lektor.exp"
 
 # gen django "django-admin startproject djangoapp" false djangoapp
 

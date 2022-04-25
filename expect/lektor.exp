@@ -1,0 +1,12 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+spawn lektor quickstart --name lektor --path lektor
+match_max 100000
+expect -re ">"
+send -- "\r"
+expect -re ">"
+send -- "\r"
+expect -re "\[?\]"
+send -- "\r"
+expect eof
