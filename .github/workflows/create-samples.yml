@@ -16,6 +16,7 @@ jobs:
         ./docker.sh run
         sudo chown -R $(id -u):$(id -g) ./samples
       env:
+        DOCKER_USER: root
         DEBUG: 1
     - name: Publish samples
       run: |
