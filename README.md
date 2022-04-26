@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/sinedied/frameworks-playground/workflows/create-samples/badge.svg)](https://github.com/sinedied/frameworks-playground/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> Create samples apps for multiple frameworks.
+> Create samples apps for multiple web frameworks.
 
 You can view the generated samples in the [`samples`](https://github.com/sinedied/frameworks-playground/tree/samples/) branch.
 
