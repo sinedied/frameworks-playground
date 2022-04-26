@@ -45,8 +45,8 @@ RUN curl https://install.meteor.com/ | sh
 RUN sudo gem install bundler jekyll middleman
 
 # Install Python packages
-RUN python -m pip install --no-cache-dir --upgrade pip \
-    && python -m pip install --no-cache-dir Django mkdocs pelican markdown Lektor
+RUN sudo python -m pip install --no-cache-dir --upgrade pip \
+    && sudo python -m pip install --no-cache-dir Django mkdocs pelican markdown Lektor
 
 # Install npm packages
 RUN npm set -g progress=false \
