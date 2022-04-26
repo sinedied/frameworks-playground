@@ -19,34 +19,14 @@ RUN curl -sfL "https://raw.githubusercontent.com/microsoft/vscode-dev-containers
 USER vscode
 
 # Install flutter
-RUN curl https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.10.4-stable.tar.xz -o /tmp/flutter.tar.xz \
+RUN FLUTTER_ARCHIVE=$(curl https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json | jq '[.releases[]|select(.channel=="stable")][0].archive') \
+    && curl https://storage.googleapis.com/flutter_infra_release/$FLUTTER_ARCHIVE -o /tmp/flutter.tar.xz \
     && tar -xJf /tmp/flutter.tar.xz -C /tmp \
     && rm -rf /tmp/flutter.tar.xz \
     && sudo chown -R vscode /tmp/flutter \
     && sudo mv /tmp/flutter /usr/local/bin/ \
     && flutter channel stable \
     && flutter upgrade
-
-# Install Elm
-RUN curl -L -o /tmp/elm.gz https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz \
-    && gunzip /tmp/elm.gz \
-    && rm -rf /tmp/elm.gz \
-    && sudo chown -R vscode /tmp/elm \
-    && sudo mv /tmp/elm /usr/local/bin/
-
-# Install Meteor
-RUN curl https://install.meteor.com/ | sh
-
-# Install npm packages
-RUN npm set -g progress=false \
-    && npm install --cache /tmp/empty-cache -g npm@latest polymer-cli docsify-cli fuzz-run
-
-# Install Python packages
-RUN python -m pip install --no-cache-dir --upgrade pip \
-    && python -m pip install --no-cache-dir Django mkdocs pelican markdown Lektor
-
-# Install Ruby packages
-RUN sudo gem install bundler jekyll middleman
 
 # Install Zola
 RUN ZOLA_VERSION=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://github.com/barnumbirr/zola-debian/releases/latest) | cut -c2-) \
@@ -57,3 +37,17 @@ RUN ZOLA_VERSION=$(basename $(curl -fs -o/dev/null -w %{redirect_url} https://gi
 # Install Rust and its packages
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     && cargo install mdbook
+
+# Install Meteor
+RUN curl https://install.meteor.com/ | sh
+
+# Install Ruby packages
+RUN sudo gem install bundler jekyll middleman
+
+# Install Python packages
+RUN python -m pip install --no-cache-dir --upgrade pip \
+    && python -m pip install --no-cache-dir Django mkdocs pelican markdown Lektor
+
+# Install npm packages
+RUN npm set -g progress=false \
+    && npm install --cache /tmp/empty-cache -g npm@latest elm-cli polymer-cli docsify-cli fuzz-run
