@@ -50,4 +50,4 @@ RUN python -m pip install --no-cache-dir --upgrade pip \
 
 # Install npm packages
 RUN npm set -g progress=false \
-    && npm install --cache /tmp/empty-cache -g npm@latest elm-cli polymer-cli docsify-cli fuzz-run
+    && npm install --cache /tmp/empty-cache -g npm@latest elm polymer-cli docsify-cli fuzz-run
