@@ -38,6 +38,7 @@ gen() {
   else
     eval "$cmd"
   fi
+  rm -rf .git || true
   popd > /dev/null
   if [ ! -z "$rename_dir" ]; then
     mv $rename_dir $name
