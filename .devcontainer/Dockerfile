@@ -19,8 +19,8 @@ RUN curl -sfL "https://raw.githubusercontent.com/microsoft/vscode-dev-containers
 USER vscode
 
 # Install flutter
-RUN FLUTTER_ARCHIVE=$(curl https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json | jq '[.releases[]|select(.channel=="stable")][0].archive') \
-    && curl https://storage.googleapis.com/flutter_infra_release/$FLUTTER_ARCHIVE -o /tmp/flutter.tar.xz \
+RUN FLUTTER_ARCHIVE=$(curl https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json | jq -r '[.releases[]|select(.channel=="stable")][0].archive') \
+    && curl "https://storage.googleapis.com/flutter_infra_release/releases/$FLUTTER_ARCHIVE" -o /tmp/flutter.tar.xz \
     && tar -xJf /tmp/flutter.tar.xz -C /tmp \
     && rm -rf /tmp/flutter.tar.xz \
     && sudo chown -R vscode /tmp/flutter \
