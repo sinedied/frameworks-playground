@@ -70,12 +70,12 @@ mkdir -p samples/api
 pushd samples/api > /dev/null
 echo "=== Generating API samples ==="
 
-gen dotnet "func init --worker-runtime dotnet" true
-gen dotnet-isolated "func init --worker-runtime dotnetIsolated" true
-gen dotnet-csx "func init --worker-runtime dotnet" true
-gen python "func init --worker-runtime python" true
-gen node "func init --worker-runtime node" true
-gen node-ts "func init --worker-runtime node --language typescript" true
+gen dotnet "func init --worker-runtime dotnet && func new --language dotnet --template 'HTTP Trigger' --authlevel anonymous --name hello" true
+gen dotnet-isolated "func init --worker-runtime dotnetIsolated && func new --language dotnetIsolated --template 'HTTP Trigger' --authlevel anonymous --name hello" true
+gen dotnet-csx "func init --worker-runtime dotnet && func new --language dotnet --template 'HTTP Trigger' --authlevel anonymous --name hello --csx" true
+gen python "func init --worker-runtime python && func new --language python --template 'HTTP Trigger' --authlevel anonymous --name hello" true
+gen node "func init --worker-runtime node && func new --language JavaScript --template 'HTTP Trigger' --authlevel anonymous --name hello" true
+gen node-ts "func init --worker-runtime node --language typescript && func new --language TypeScript --template 'HTTP Trigger' --authlevel anonymous --name hello" true
 
 #########################################
 # App frameworks (Static Sites)
