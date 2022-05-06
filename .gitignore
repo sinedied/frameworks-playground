@@ -75,6 +75,7 @@ dist/
 
 # Other
 /samples/
+.gitmodules
 .env
 .DS_Store
 TODO
