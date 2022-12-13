@@ -86,7 +86,7 @@ pushd samples/app > /dev/null
 echo "=== Generating App samples ==="
 
 gen static "echo '<!doctype html><html><body>Hello world</body></html>' > index.html" true
-gen gatsby "npx create-gatsby@latest -y gatsby"
+gen gatsby "GATSBY_LOGGER=yurnalist npx create-gatsby@latest -y --no-color gatsby"
 gen angular "npx @angular/cli@latest new angular --defaults --skip-git --skip-install --minimal"
 gen angular-scully "npx @angular/cli@latest new angular-scully --defaults --skip-git --skip-install --minimal && cd angular-scully && nofail \"npx @angular/cli@latest add --skip-confirmation --defaults @scullyio/init@latest\""
 gen react "npx create-react-app@latest react-app" false react-app
