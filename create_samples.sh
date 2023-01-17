@@ -70,12 +70,12 @@ mkdir -p samples/api
 pushd samples/api > /dev/null
 echo "=== Generating API samples ==="
 
-gen dotnet "func init --worker-runtime dotnet && func new --language dotnet --template 'HTTP Trigger' --authlevel anonymous --name hello" true
-gen dotnet-isolated "func init --worker-runtime dotnetIsolated && func new --language dotnetIsolated --template 'HTTP Trigger' --authlevel anonymous --name hello" true
-gen dotnet-csx "func init --worker-runtime dotnet && func new --language dotnet --template 'HTTP Trigger' --authlevel anonymous --name hello --csx" true
-gen python "func init --worker-runtime python && func new --language python --template 'HTTP Trigger' --authlevel anonymous --name hello" true
-gen node "func init --worker-runtime node && func new --language JavaScript --template 'HTTP Trigger' --authlevel anonymous --name hello" true
-gen node-ts "func init --worker-runtime node --language typescript && func new --language TypeScript --template 'HTTP Trigger' --authlevel anonymous --name hello" true
+gen dotnet "func init --worker-runtime dotnet && func new --language dotnet --template 'HttpTrigger' --authlevel anonymous --name hello" true
+gen dotnet-isolated "func init --worker-runtime dotnetIsolated && func new --language dotnetIsolated --template 'HttpTrigger' --authlevel anonymous --name hello" true
+gen dotnet-csx "func init --worker-runtime dotnet && func new --language dotnet --template 'HttpTrigger' --authlevel anonymous --name hello --csx" true
+gen python "func init --worker-runtime python && func new --language python --template 'HttpTrigger' --authlevel anonymous --name hello" true
+gen node "func init --worker-runtime node && func new --language JavaScript --template 'HttpTrigger' --authlevel anonymous --name hello" true
+gen node-ts "func init --worker-runtime node --language typescript && func new --language TypeScript --template 'HttpTrigger' --authlevel anonymous --name hello" true
 
 #########################################
 # App frameworks (Static Sites)
@@ -139,6 +139,12 @@ gen brunch "npx degit brunch/with-es6 brunch"
 gen mdbook "autoenter mdbook init --force --ignore git --theme --title mdbook mdbook"
 gen zola "autoenter zola init zola && cd zola && mkdir -p content/blog && printf '+++\ntitle = \"Hello\"\n+++\n# Hello Zola' > content/blog/_index.md && git clone https://github.com/InputUsername/zola-hook.git themes/hook && echo -e 'theme = \"hook\"\n' > config.tmp && cat config.toml >> config.tmp && mv config.tmp config.toml"
 gen lektor "$ROOT_DIR/expect/lektor.exp"
+gen vite-vanilla "npx create-vite@latest vite-vanilla --template vanilla"
+gen vite-vue "npx create-vite@latest vite-vue --template vue --variant javascript"
+gen vite-react "npx create-vite@latest vite-react --template react --variant typescript"
+gen vite-preact "npx create-vite@latest vite-preact --template preact --variant javascript"
+gen vite-svelte "npx create-vite@latest vite-svelte --template svelte --variant javascript"
+gen vite-lit "npx create-vite@latest vite-lit --template lit --variant javascript"
 
 # gen django "django-admin startproject djangoapp" false djangoapp
 
