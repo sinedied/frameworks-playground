@@ -2,7 +2,7 @@
 # https://github.com/Azure/azure-functions-docker/blob/dev/host/4/bullseye/amd64/python/python39/python39-core-tools.Dockerfile
 FROM mcr.microsoft.com/azure-functions/python:4-python3.9-core-tools
 
-ARG NODE_VERSION="16"
+ARG NODE_VERSION="18"
 ENV PLATFORM_DOCKER=1 \
     NVM_DIR="/usr/local/share/nvm" \
     NVM_SYMLINK_CURRENT=true \
